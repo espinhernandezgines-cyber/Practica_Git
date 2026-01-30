@@ -1,13 +1,9 @@
-# Mi Proyecto Java
-import java.util.Date; // Importante añadir el import arriba
+﻿# Proyecto de Gestión de Usuarios - Práctica 4.1
+Este repositorio contiene una aplicación Java que permite:
+1. Ver la fecha y hora actual del sistema.
+2. Crear un listado de usuarios personalizado.
+3. Almacenar datos (Nombre, Apellidos, Email) en un array de objetos.
 
-public class Principal {
-    public static void main(String[] args) {
-        System.out.println("Hola mundo");
-        mostrarFecha();
-    }
-
-    public static void mostrarFecha() {
-        System.out.println("Fecha actual: " + new Date());
-    }
-}
+## Estructura del proyecto
+- **Principal.java**: Clase principal con la lógica del programa.
+- **Usuario.java**: Clase que define el modelo de datos de los usuarios.
