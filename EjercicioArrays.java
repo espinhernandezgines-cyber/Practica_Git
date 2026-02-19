@@ -41,52 +41,41 @@ public class EjercicioArrays {
         		indMaxNota = i+1;
         	}
         }
-           
-        //Comprobamos el resultado del ejercicio   
+
+		//Comprobamos el resultado del ejercicio   
         System.out.println("Mínimo es: " + minNota);
         System.out.println("Máximo es: " + maxNota);
         System.out.println("Indice del mínimo es : " + indMinNota);
         System.out.println("Indice del máximo es : " + indMaxNota);
         System.out.println("Lista de clase :" + Arrays.toString(listaClase));
-        System.out.println("Array de Notas :" + notas);
-        
-        //creamos el array de notas "practicas"
-        practicas = new int[numAlumnos];
-        for(int i=0; i < practicas.length; i++){
-            practicas[i] = (int)(Math.random()*11);
-        }
-        //Creamos el vector calificaciones
-        calificaciones = new float[numAlumnos];
-        for(int i = 0; i<control.length; i++){
-            calificaciones[i] = 
-                    (((float) control[i] 
-                    + (float) practicas[i]) 
-                    / 2);
-        }
+        System.out.println("Array de Notas :" + Arrays.toString(examen));
         System.out.println("Prácticas      :" + Arrays.toString(practicas));
         System.out.println("Calificaciones :" + Arrays.toString(calificaciones));
         
         //Sacamos la estadística de calificaciones
         //hacemos un array de 10 para la estadística.
-        estadistica = new float[10];
-      
-        for (int i=0; i<10; i++){
-            float count = 0;
-            float sum = 0;
-            for (int j=0; j<control.length; j++){
-                if ((i < calificaciones[j]) && ((i+1) >= calificaciones[j] )) {
-                    sum += calificaciones[j];
-                    count += 1;
+        float[] estadistica = new float[10];
+        
+        for (int i = 0; i < 10; i++){
+            int count = 0; // Solo necesitamos contar cuántos alumnos entran en el tramo
+            
+            for (int j = 0; j < calificaciones.length; j++){
+                // Comprobamos si la nota está dentro del tramo 
+                if ((calificaciones[j] > i) && (calificaciones[j] <= (i + 1))) {
+                    count++;
                 }
             }
-            if (count != 0){
-                estadistica[i] = ( (float)count / numAlumnos);
-            }else{ estadistica[i] = 0;}
-            double sol = (Math.round(estadistica[i] * 10000.0)) / 100.0;
+            
+            // Calculamos el porcentaje
+            double sol = (count * 100.0) / numAlumnos;
+            
+            estadistica[i] = (float) sol;
+
             System.out.println("Estadística nota tramo <=" 
                 + (i+1) + " = " 
                 + sol + "%");
         }
+       
         //Aprobados y suspensos
         aprobados = new int[numAlumnos];
         suspensos = new int[numAlumnos];
