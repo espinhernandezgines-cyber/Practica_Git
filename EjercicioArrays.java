@@ -52,7 +52,7 @@ public class EjercicioArrays {
         System.out.println("Prácticas      :" + Arrays.toString(practicas));
         System.out.println("Calificaciones :" + Arrays.toString(calificaciones));
         
-        //Sacamos la estadística de calificaciones
+       //Sacamos la estadística de calificaciones
         //hacemos un array de 10 para la estadística.
         float[] estadistica = new float[10];
         
