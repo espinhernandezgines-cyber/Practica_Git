@@ -76,7 +76,7 @@ public class EjercicioArrays {
                 + sol + "%");
         }
 
-		 //Aprobados y suspensos
+		  //Aprobados y suspensos
         int[] aprobados = new int[numAlumnos];
         int[] suspensos = new int[numAlumnos];
         int countAprobados = 0;
@@ -133,5 +133,4 @@ public class EjercicioArrays {
         
         System.out.println("Nota nueva   alumno nº4: " + califExtra[3]);
     }
-        
 }
