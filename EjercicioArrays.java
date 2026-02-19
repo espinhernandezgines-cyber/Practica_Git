@@ -75,62 +75,63 @@ public class EjercicioArrays {
                 + (i+1) + " = " 
                 + sol + "%");
         }
-       
-        //Aprobados y suspensos
-        aprobados = new int[numAlumnos];
-        suspensos = new int[numAlumnos];
+
+		 //Aprobados y suspensos
+        int[] aprobados = new int[numAlumnos];
+        int[] suspensos = new int[numAlumnos];
         int countAprobados = 0;
         int countSuspensos = 0;
-        for (int i=0; i<numAlumnos; i++){
-            if (calificaciones[i] < 5){
-                aprobados[i] = i;
-                countAprobados += 1;
-            }else{ 
-                suspensos[i] = i;
-                countSuspensos += 1;
+
+        for (int i = 0; i < numAlumnos; i++) {
+            if (calificaciones[i] >= 5) { 
+                aprobados[i] = i + 1;   
+                countAprobados++;
+            } else {
+                suspensos[i] = i + 1;
+                countSuspensos++;
             }
         }        
-        System.out.println("Relación de aprobados por nº de lista: " 
-                + Arrays.toString(aprobados));
-        System.out.println("Relación de suspensos por nº de lista: " 
-                + Arrays.toString(suspensos));
+        
+        System.out.println("Relación de aprobados por nº de lista: " + Arrays.toString(aprobados));
+        System.out.println("Relación de suspensos por nº de lista: " + Arrays.toString(suspensos));
+        
         //Resumen de aprobados y suspensos
-        int i = 0;
-        int x = 0;
-        int[] a = new int[countAprobados];
-        int[] s = new int[countSuspensos];
-        while(i < aprobados.length){
-            if(aprobados[i] != 0){
-                a[x] = aprobados[i];
-                i++;
-                x++;
-            }else{ i++; }
+        int[] listaLimpiaAprobados = new int[countAprobados];
+        int[] listaLimpiaSuspensos = new int[countSuspensos];
+        
+        int idxA = 0;
+        int idxS = 0;
+        
+        for (int i = 0; i < numAlumnos; i++) {
+            if (aprobados[i] != 0) {
+                listaLimpiaAprobados[idxA] = aprobados[i];
+                idxA++;
+            }
+            if (suspensos[i] != 0) {
+                listaLimpiaSuspensos[idxS] = suspensos[i];
+                idxS++;
+            }
         }
         
-        i = x = 0;
-        while(i < suspensos.length){
-            if(suspensos[i] != 0){
-                s[x] = suspensos[i];
-                i++;
-                x++;
-            }else{ i++; }
-        }
-        System.out.println("Resumen  de aprobados por nº de lista: " 
-                + Arrays.toString(a));
-        System.out.println("Resumen  de aprobados por nº de lista: " 
-                + Arrays.toString(s));
+        System.out.println("Resumen  de aprobados por nº de lista: " + Arrays.toString(listaLimpiaAprobados));
+        System.out.println("Resumen  de suspensos por nº de lista: " + Arrays.toString(listaLimpiaSuspensos));
     
         /*6. Suponer un vector de Calificaciones de tamaño 40 
         (máximo de alumnos por clase), pero que solo almacena las
         notas de 31 alumnos. Realizar un programa que permita insertar en
         la posición 4 del vector la calificación de un nuevo 
         alumno en clase al que supuestamente le corresponde como nota un 6.*/
-        calif = new double[40];
-        for (int j=0; j<31; j++){
-            calif[j] = (int)(Math.random()*11);
+        double[] califExtra = new double[40]; 
+        
+        for (int j = 0; j < 31; j++) {
+            califExtra[j] = (int) (Math.random() * 11);
         }
-        System.out.println("Nota antigua alumno nº4: " + calif[3]); 
-        calif[3] = 6;
-        System.out.println("Nota nueva   alumno nº4: " + calif[3]);
+
+        System.out.println("Nota antigua alumno nº4: " + califExtra[3]); 
+        
+        califExtra[3] = 6.0;
+        
+        System.out.println("Nota nueva   alumno nº4: " + califExtra[3]);
     }
+        
 }
