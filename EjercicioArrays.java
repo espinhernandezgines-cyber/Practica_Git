@@ -5,52 +5,43 @@ import java.util.List;
 public class EjercicioArrays {
     
     public static void main(String[] args) {
-        int numAlumnos = 40;
+       int numAlumnos = 40;
         //vector con las notas generadas
-        Integer[] control = new Integer[numAlumnos];
-		int[] listaClase;
-		int[] practicas;
-		float[] calificaciones;
-		float[] estadistica;
-		int[] aprobados;
-		int[] suspensos;
-        int maxNota = 0;
-        int minNota = 0;
-        int indMaxNota, indMinNota;
-        int postEval;
-		double[] calif;
+        int[] listaClase = new int[numAlumnos];
+		int[] examen = new int [numAlumnos];
+        int[] practicas = new int[numAlumnos];
+        float[] calificaciones = new float[numAlumnos];
+        
         //Genera notas random entre 1 y 10
-        for(int i=0; i < control.length; i++){
-            control[i] = (int)(Math.random()*11);
-        }
-        //buscamos al mayor
-        postEval = 11;
-        for(int i=0; i<control.length; i++){
-            int preEval = control[i];
-            if (preEval < postEval){
-                minNota = preEval;
-                postEval = control[i];
-            }
-        }
-        //buscamos al menor
-        postEval = 0;
-        for(int i=0; i<control.length; i++){
-            int preEval = control[i];
-            if (preEval > postEval){
-                maxNota = preEval;
-                postEval = control[i];
-            }
-        }
-        //creamos una lista de los alumnos de la clase
-        listaClase = new int[numAlumnos];
-        for (int i = 0; i < numAlumnos; i++){
+        for(int i=0; i < numAlumnos; i++){
             listaClase[i] = i+1;
+            examen[i] = (int) (Math.random() * 11);
+            practicas[i] = (int) (Math.random() * 11);
+            
+            calificaciones[i] = (examen[i] + practicas[i])/2;
         }
-        //Empezamos el uso de listas para facilitar la tarea de índices.
-        List notas = Arrays.asList(control);
-        indMinNota = notas.indexOf(minNota) + 1;
-        indMaxNota = notas.indexOf(maxNota) + 1;
-
+        
+        int minNota = 11;
+        int maxNota = -1;
+        int indMinNota = 0;
+        int indMaxNota = 0;
+        
+        //buscamos al mayor
+        for (int i = 0; i < examen.length; i++) {
+        	if(examen[i]<minNota) {
+        		minNota = examen[i];
+        		indMinNota = i+1;
+        	}
+        }
+            
+        //buscamos al menor
+        for (int i = 0; i < examen.length; i++) {
+        	if(examen[i]>maxNota) {
+        		maxNota = examen[i];
+        		indMaxNota = i+1;
+        	}
+        }
+           
         //Comprobamos el resultado del ejercicio   
         System.out.println("Mínimo es: " + minNota);
         System.out.println("Máximo es: " + maxNota);
